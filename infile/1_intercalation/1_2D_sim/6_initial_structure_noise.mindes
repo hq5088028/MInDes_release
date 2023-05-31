@@ -1,0 +1,362 @@
+###### whether to test this input file
+InputFile.debug = true
+
+###### Init Solver
+Solver.Mesh.Nx = 256
+Solver.Mesh.Ny = 256
+Solver.Mesh.Nz = 1
+Solver.Loop.begin_step = 0
+Solver.Loop.end_step = 10
+
+Solver.Loop.screen_loop_step = 1
+Solver.Loop.screen_output_step = 500
+Solver.Loop.vts_output_step = 500
+Solver.Loop.data_output_step = 100000
+Postprocess.PCT.VTS.phi_index = true
+Postprocess.PCT.VTS.con = true
+Postprocess.PCT.VTS.potential = true
+Postprocess.PCT.VTS.phi_name = true
+Solver.PCT.TimeInterval.dt = 0.10000
+Solver.Phi.is_normalize = true
+Solver.Parallel.openmp_thread_counts = 2
+Solver.PairWise.accelerate = true
+
+# Solver.PCT.TimeInterval.auto_adjust = (delt_step,max_scale,is_reduce_output)
+Solver.PCT.TimeInterval.auto_adjust = (50,1e3,false)
+Solver.PCT.phi_increment_limit = 0.001000
+Solver.PCT.con_increment_limit = 1.0
+
+<AUTO> Solver.Loop.stop = false
+
+Solver.Phases = {[(liquid),(Cu,Li)],[(LiSn),(Cu,Li)],[(Li7Sn3),(Cu,Li)],[(CuLi2Sn2),(Cu,Li)],[(Cu2LiSn),(Cu,Li)],[(Cu),(Cu,Li)],[(CuLi2Sn),(Cu,Li)]}
+Solver.Comps = (Cu,Li)
+
+Preprocess.Microstructure.is_datafile_init = true
+Preprocess.Microstructure.datafile_path = 5_init_data_structure/data_end.dat
+Preprocess.Microstructure.geometry_layer_number = 30
+Preprocess.Microstructure.geometry_layer_0.property = (7,CuLi2Sn2,1,1,false)
+Preprocess.Microstructure.geometry_layer_0.phi = 0.000000
+Preprocess.Microstructure.geometry_layer_0.x = [(Cu,0.0),(Li,0.0)]
+Preprocess.Microstructure.geometry_layer_1.property = (8,CuLi2Sn2,1,1,false)
+Preprocess.Microstructure.geometry_layer_1.phi = 0.000000
+Preprocess.Microstructure.geometry_layer_1.x = [(Cu,0.0),(Li,0.0)]
+Preprocess.Microstructure.geometry_layer_2.property = (9,CuLi2Sn2,1,1,false)
+Preprocess.Microstructure.geometry_layer_2.phi = 0.000000
+Preprocess.Microstructure.geometry_layer_2.x = [(Cu,0.0),(Li,0.0)]
+Preprocess.Microstructure.geometry_layer_3.property = (10,CuLi2Sn2,1,1,false)
+Preprocess.Microstructure.geometry_layer_3.phi = 0.000000
+Preprocess.Microstructure.geometry_layer_3.x = [(Cu,0.0),(Li,0.0)]
+Preprocess.Microstructure.geometry_layer_4.property = (11,CuLi2Sn2,1,1,false)
+Preprocess.Microstructure.geometry_layer_4.phi = 0.000000
+Preprocess.Microstructure.geometry_layer_4.x = [(Cu,0.0),(Li,0.0)]
+Preprocess.Microstructure.geometry_layer_5.property = (12,CuLi2Sn2,1,1,false)
+Preprocess.Microstructure.geometry_layer_5.phi = 0.000000
+Preprocess.Microstructure.geometry_layer_5.x = [(Cu,0.0),(Li,0.0)]
+Preprocess.Microstructure.geometry_layer_6.property = (13,Cu2LiSn,1,1,false)
+Preprocess.Microstructure.geometry_layer_6.phi = 0.000000
+Preprocess.Microstructure.geometry_layer_6.x = [(Cu,0.0),(Li,0.0)]
+Preprocess.Microstructure.geometry_layer_7.property = (14,Cu2LiSn,1,1,false)
+Preprocess.Microstructure.geometry_layer_7.phi = 0.000000
+Preprocess.Microstructure.geometry_layer_7.x = [(Cu,0.0),(Li,0.0)]
+Preprocess.Microstructure.geometry_layer_8.property = (15,Cu2LiSn,1,1,false)
+Preprocess.Microstructure.geometry_layer_8.phi = 0.000000
+Preprocess.Microstructure.geometry_layer_8.x = [(Cu,0.0),(Li,0.0)]
+Preprocess.Microstructure.geometry_layer_9.property = (16,Cu2LiSn,1,1,false)
+Preprocess.Microstructure.geometry_layer_9.phi = 0.000000
+Preprocess.Microstructure.geometry_layer_9.x = [(Cu,0.0),(Li,0.0)]
+Preprocess.Microstructure.geometry_layer_10.property = (17,Cu2LiSn,1,1,false)
+Preprocess.Microstructure.geometry_layer_10.phi = 0.000000
+Preprocess.Microstructure.geometry_layer_10.x = [(Cu,0.0),(Li,0.0)]
+Preprocess.Microstructure.geometry_layer_11.property = (18,Cu2LiSn,1,1,false)
+Preprocess.Microstructure.geometry_layer_11.phi = 0.000000
+Preprocess.Microstructure.geometry_layer_11.x = [(Cu,0.0),(Li,0.0)]
+Preprocess.Microstructure.geometry_layer_12.property = (19,Cu,1,1,false)
+Preprocess.Microstructure.geometry_layer_12.phi = 0.000000
+Preprocess.Microstructure.geometry_layer_12.x = [(Cu,0.0),(Li,0.0)]
+Preprocess.Microstructure.geometry_layer_13.property = (20,Cu,1,1,false)
+Preprocess.Microstructure.geometry_layer_13.phi = 0.000000
+Preprocess.Microstructure.geometry_layer_13.x = [(Cu,0.0),(Li,0.0)]
+Preprocess.Microstructure.geometry_layer_14.property = (21,Cu,1,1,false)
+Preprocess.Microstructure.geometry_layer_14.phi = 0.000000
+Preprocess.Microstructure.geometry_layer_14.x = [(Cu,0.0),(Li,0.0)]
+Preprocess.Microstructure.geometry_layer_15.property = (22,Cu,1,1,false)
+Preprocess.Microstructure.geometry_layer_15.phi = 0.000000
+Preprocess.Microstructure.geometry_layer_15.x = [(Cu,0.0),(Li,0.0)]
+Preprocess.Microstructure.geometry_layer_16.property = (23,Cu,1,1,false)
+Preprocess.Microstructure.geometry_layer_16.phi = 0.000000
+Preprocess.Microstructure.geometry_layer_16.x = [(Cu,0.0),(Li,0.0)]
+Preprocess.Microstructure.geometry_layer_17.property = (24,Cu,1,1,false)
+Preprocess.Microstructure.geometry_layer_17.phi = 0.000000
+Preprocess.Microstructure.geometry_layer_17.x = [(Cu,0.0),(Li,0.0)]
+Preprocess.Microstructure.geometry_layer_18.property = (25,Li7Sn3,1,1,false)
+Preprocess.Microstructure.geometry_layer_18.phi = 0.000000
+Preprocess.Microstructure.geometry_layer_18.x = [(Cu,0.0),(Li,0.0)]
+Preprocess.Microstructure.geometry_layer_19.property = (26,Li7Sn3,1,1,false)
+Preprocess.Microstructure.geometry_layer_19.phi = 0.000000
+Preprocess.Microstructure.geometry_layer_19.x = [(Cu,0.0),(Li,0.0)]
+Preprocess.Microstructure.geometry_layer_20.property = (27,Li7Sn3,1,1,false)
+Preprocess.Microstructure.geometry_layer_20.phi = 0.000000
+Preprocess.Microstructure.geometry_layer_20.x = [(Cu,0.0),(Li,0.0)]
+Preprocess.Microstructure.geometry_layer_21.property = (28,Li7Sn3,1,1,false)
+Preprocess.Microstructure.geometry_layer_21.phi = 0.000000
+Preprocess.Microstructure.geometry_layer_21.x = [(Cu,0.0),(Li,0.0)]
+Preprocess.Microstructure.geometry_layer_22.property = (29,Li7Sn3,1,1,false)
+Preprocess.Microstructure.geometry_layer_22.phi = 0.000000
+Preprocess.Microstructure.geometry_layer_22.x = [(Cu,0.0),(Li,0.0)]
+Preprocess.Microstructure.geometry_layer_23.property = (30,Li7Sn3,1,1,false)
+Preprocess.Microstructure.geometry_layer_23.phi = 0.000000
+Preprocess.Microstructure.geometry_layer_23.x = [(Cu,0.0),(Li,0.0)]
+Preprocess.Microstructure.geometry_layer_24.property = (31,CuLi2Sn,1,1,false)
+Preprocess.Microstructure.geometry_layer_24.phi = 0.000000
+Preprocess.Microstructure.geometry_layer_24.x = [(Cu,0.0),(Li,0.0)]
+Preprocess.Microstructure.geometry_layer_25.property = (32,CuLi2Sn,1,1,false)
+Preprocess.Microstructure.geometry_layer_25.phi = 0.000000
+Preprocess.Microstructure.geometry_layer_25.x = [(Cu,0.0),(Li,0.0)]
+Preprocess.Microstructure.geometry_layer_26.property = (33,CuLi2Sn,1,1,false)
+Preprocess.Microstructure.geometry_layer_26.phi = 0.000000
+Preprocess.Microstructure.geometry_layer_26.x = [(Cu,0.0),(Li,0.0)]
+Preprocess.Microstructure.geometry_layer_27.property = (34,CuLi2Sn,1,1,false)
+Preprocess.Microstructure.geometry_layer_27.phi = 0.000000
+Preprocess.Microstructure.geometry_layer_27.x = [(Cu,0.0),(Li,0.0)]
+Preprocess.Microstructure.geometry_layer_28.property = (35,CuLi2Sn,1,1,false)
+Preprocess.Microstructure.geometry_layer_28.phi = 0.000000
+Preprocess.Microstructure.geometry_layer_28.x = [(Cu,0.0),(Li,0.0)]
+Preprocess.Microstructure.geometry_layer_29.property = (36,CuLi2Sn,1,1,false)
+Preprocess.Microstructure.geometry_layer_29.phi = 0.000000
+Preprocess.Microstructure.geometry_layer_29.x = [(Cu,0.0),(Li,0.0)]
+
+Preprocess.fill_phis = {[(1,2,3,4,5,6),(0,0.5),(0,0.5),(0.0)]}
+
+# ModelsManager.Phi.equation : 0 - Const, 1 - AllenCahn Standard, 2 - AllenCahn Pairwise, 3 - CahnHilliard Standard
+ModelsManager.Phi.equation = 2
+# ModelsManager.Phi.Lij.const  = Lij_value 
+#                      .matrix = [(phi_i, phi_j, Lij_value), ... ] 
+#                      .block = [(phi_begin, phi_end, Lij_value), ... ] 
+ModelsManager.Phi.Lij.const  = Mob_solid
+# ModelsManager.Phi.Lij.Const.block = [(phi_index1, phi_index2, ... ), ... ] 
+ModelsManager.Phi.Lij.Const.block = [(1,7,13,19,25,31),(2,8,14,20,26,32),(3,9,15,21,27,33),(4,10,16,22,28,34),(5,11,17,23,29,35),(6,12,18,24,30,36)]
+# ModelsManager.Phi.InterfaceEnergy.int_gradient : 0 - Steinbach_1996 , 1 - Steinbach_1999 , 2 - Steinbach_G2009
+ModelsManager.Phi.InterfaceEnergy.int_gradient = 2
+# ModelsManager.Phi.InterfaceEnergy.int_potential : 0 - Nestler_Well , 1 - Nestler_Obstacle , 2 - Steinbach_P2009
+ModelsManager.Phi.InterfaceEnergy.int_potential = 2
+ModelsManager.Phi.InterfaceEnergy.int_width = 6.000000
+# ModelsManager.Phi.xi_ab.const  = xi_ab 
+#                        .matrix = [(phi_a, phi_b, xi_ab_value), ...] 
+ModelsManager.Phi.xi_ab.const = interface_energy_ab
+# ModelsManager.Phi.xi_abc.const  = xi_ab 
+#                         .matrix = [(phi_a, phi_b, phi_c, xi_abc_value), ...] 
+ModelsManager.Phi.xi_abc.const = interface_energy_abc
+
+ModelsManager.Con.equation = 3
+# ModelsManager.Con.valid_domain : 0 - Standard, 1 - Reverse
+ModelsManager.Con.valid_domain = 1
+ModelsManager.Con.ValidDomain.phase_indexes = (0)
+ModelsManager.Con.ValidDomain.threshold = 0.900000
+# ModelsManager.Con.Mii = [(phase_0_M_00 , phase_0_M_11, ...) , ... ]
+ModelsManager.Con.Mii = [(0.0,0.0),(M_LiSn_Cu,M_LiSn_Li),(M_Li7Sn3_Cu,M_Li7Sn3_Li),(M_CuLi2Sn2_Cu,M_CuLi2Sn2_Li),(M_Cu2LiSn_Cu,M_Cu2LiSn_Li),(M_Cu_Cu,M_Cu_Li),(M_CuLi2Sn_Cu,M_CuLi2Sn_Li)]
+
+# ModelsManager.PhiCon.BulkEnergy.type : 8 - HighOrder
+ModelsManager.PhiCon.BulkEnergy.type = 8
+# High Order Multivariate Linear Equation : f(xi) = sum_i{ sum_j[ Aij * xi^j ] }, i: component, j: order
+ModelsManager.Phi.BulkEnergy.liquid = [(0.0),(0.0)]
+
+ModelsManager.Phi.BulkEnergy.Fchem.LiSn = [(f_LiSn_A00,f_LiSn_A01,f_LiSn_A02),(f_LiSn_A10,f_LiSn_A11,f_LiSn_A12)]
+ModelsManager.Phi.BulkEnergy.GrandCon.LiSn_Cu = (PhiCon_LiSn_Cu_A0,PhiCon_LiSn_Cu_A1)
+ModelsManager.Phi.BulkEnergy.dPhiCon_dU.LiSn_Cu = (PhiCon_LiSn_Cu_A1)
+ModelsManager.Phi.BulkEnergy.GrandCon.LiSn_Li = (PhiCon_LiSn_Li_A0,PhiCon_LiSn_Li_A1)
+ModelsManager.Phi.BulkEnergy.dPhiCon_dU.LiSn_Li = (PhiCon_LiSn_Li_A1)
+
+ModelsManager.Phi.BulkEnergy.Fchem.Li7Sn3 = [(f_Li7Sn3_A00,f_Li7Sn3_A01,f_Li7Sn3_A02),(f_Li7Sn3_A10,f_Li7Sn3_A11,f_Li7Sn3_A12)]
+ModelsManager.Phi.BulkEnergy.GrandCon.Li7Sn3_Cu = (PhiCon_Li7Sn3_Cu_A0,PhiCon_Li7Sn3_Cu_A1)
+ModelsManager.Phi.BulkEnergy.dPhiCon_dU.Li7Sn3_Cu = (PhiCon_Li7Sn3_Cu_A1)
+ModelsManager.Phi.BulkEnergy.GrandCon.Li7Sn3_Li = (PhiCon_Li7Sn3_Li_A0,PhiCon_Li7Sn3_Li_A1)
+ModelsManager.Phi.BulkEnergy.dPhiCon_dU.Li7Sn3_Li = (PhiCon_Li7Sn3_Li_A1)
+
+ModelsManager.Phi.BulkEnergy.Fchem.CuLi2Sn2 = [(f_CuLi2Sn2_A00,f_CuLi2Sn2_A01,f_CuLi2Sn2_A02),(f_CuLi2Sn2_A10,f_CuLi2Sn2_A11,f_CuLi2Sn2_A12)]
+ModelsManager.Phi.BulkEnergy.GrandCon.CuLi2Sn2_Cu = (PhiCon_CuLi2Sn2_Cu_A0,PhiCon_CuLi2Sn2_Cu_A1)
+ModelsManager.Phi.BulkEnergy.dPhiCon_dU.CuLi2Sn2_Cu = (PhiCon_CuLi2Sn2_Cu_A1)
+ModelsManager.Phi.BulkEnergy.GrandCon.CuLi2Sn2_Li = (PhiCon_CuLi2Sn2_Li_A0,PhiCon_CuLi2Sn2_Li_A1)
+ModelsManager.Phi.BulkEnergy.dPhiCon_dU.CuLi2Sn2_Li = (PhiCon_CuLi2Sn2_Li_A1)
+
+ModelsManager.Phi.BulkEnergy.Fchem.Cu2LiSn = [(f_Cu2LiSn_A00,f_Cu2LiSn_A01,f_Cu2LiSn_A02),(f_Cu2LiSn_A10,f_Cu2LiSn_A11,f_Cu2LiSn_A12)]
+ModelsManager.Phi.BulkEnergy.GrandCon.Cu2LiSn_Cu = (PhiCon_Cu2LiSn_Cu_A0,PhiCon_Cu2LiSn_Cu_A1)
+ModelsManager.Phi.BulkEnergy.dPhiCon_dU.Cu2LiSn_Cu = (PhiCon_Cu2LiSn_Cu_A1)
+ModelsManager.Phi.BulkEnergy.GrandCon.Cu2LiSn_Li = (PhiCon_Cu2LiSn_Li_A0,PhiCon_Cu2LiSn_Li_A1)
+ModelsManager.Phi.BulkEnergy.dPhiCon_dU.Cu2LiSn_Li = (PhiCon_Cu2LiSn_Li_A1)
+
+ModelsManager.Phi.BulkEnergy.Fchem.Cu = [(f_Cu_A00,f_Cu_A01,f_Cu_A02),(f_Cu_A10,f_Cu_A11,f_Cu_A12)]
+ModelsManager.Phi.BulkEnergy.GrandCon.Cu_Cu = (PhiCon_Cu_Cu_A0,PhiCon_Cu_Cu_A1)
+ModelsManager.Phi.BulkEnergy.dPhiCon_dU.Cu_Cu = (PhiCon_Cu_Cu_A1)
+ModelsManager.Phi.BulkEnergy.GrandCon.Cu_Li = (PhiCon_Cu_Li_A0,PhiCon_Cu_Li_A1)
+ModelsManager.Phi.BulkEnergy.dPhiCon_dU.Cu_Li = (PhiCon_Cu_Li_A1)
+
+ModelsManager.Phi.BulkEnergy.Fchem.CuLi2Sn = [(f_CuLi2Sn_A00,f_CuLi2Sn_A01,f_CuLi2Sn_A02),(f_CuLi2Sn_A10,f_CuLi2Sn_A11,f_CuLi2Sn_A12)]
+ModelsManager.Phi.BulkEnergy.GrandCon.CuLi2Sn_Cu = (PhiCon_CuLi2Sn_Cu_A0,PhiCon_CuLi2Sn_Cu_A1)
+ModelsManager.Phi.BulkEnergy.dPhiCon_dU.CuLi2Sn_Cu = (PhiCon_CuLi2Sn_Cu_A1)
+ModelsManager.Phi.BulkEnergy.GrandCon.CuLi2Sn_Li = (PhiCon_CuLi2Sn_Li_A0,PhiCon_CuLi2Sn_Li_A1)
+ModelsManager.Phi.BulkEnergy.dPhiCon_dU.CuLi2Sn_Li = (PhiCon_CuLi2Sn_Li_A1)
+
+# Postprocess.Phi.uniform_noise = {[(applied_phi_index),(generate_phi_index_0, ... ),(generate_phi_name_0, ... )], ... } 
+# Postprocess.Phi.uniform_noise = {[(1),(9,13,17),(CuLi2Sn2,Cu2LiSn,Cu)],[(2),(10,14,18),(CuLi2Sn2,Cu2LiSn,Cu)],[(3),(11,15,19),(CuLi2Sn2,Cu2LiSn,Cu)],[(4),(12,16,20),(CuLi2Sn2,Cu2LiSn,Cu)]}
+# Postprocess.Phi.uniform_noise = {[(1),(9,13,17),(CuLi2Sn2,Cu2LiSn,Cu)]}
+Postprocess.Phi.interface_noise = {[(1),(7,13,19),(CuLi2Sn2,Cu2LiSn,Cu)],[(2),(8,14,20),(CuLi2Sn2,Cu2LiSn,Cu)],[(3),(9,15,21),(CuLi2Sn2,Cu2LiSn,Cu)],[(4),(10,16,22),(CuLi2Sn2,Cu2LiSn,Cu)],[(5),(11,17,23),(CuLi2Sn2,Cu2LiSn,Cu)],[(6),(12,18,24),(CuLi2Sn2,Cu2LiSn,Cu)]}
+Postprocess.Phi.noise.is_start = true
+Postprocess.Phi.noise.frequency = 2000
+Postprocess.Phi.noise.amplitude = 1.000000
+Postprocess.Phi.noise.random = (0.0,1.0)
+Postprocess.Phi.noise.driving_force_threshold = 0.000001
+Postprocess.Phi.noise.when_phi_absent = false
+
+Postprocess.Statistics.is_phi_c_t = true
+
+
+######################### define custom variables and functions #########################
+# Define.Var = A,0.1
+# Define.Func = ABC@{[(A*PHI<1>)]}@
+# default field variables: "PHI", "dPHI_dt", "lap_PHI", "PHI_X", "dPHI_X_dt", "X", "dX_dt"
+#                          "T", "dT_dt", "lap_T", "P", "dP_dt", "lap_P", "PHI_P", "dPHI_P_dt", "lap_PHI_P"
+# default functions      : "pow", "sqrt", "abs", "exp", "ln", "log", "sin", "cos", "tan", "asin", "acos", "atan"
+#########################################################################################
+# ref state
+Define.Var = Temp,300.0
+Define.Var = GAS_CONST,8.31441
+# 298.14 K < Temp < 1357.77 K -7770.458+130.485235*Temp-24.112392*Temp*log(Temp)-0.00265684*Temp*Temp+1.29223e-7*Temp*Temp*Temp+52478/Temp
+Define.Var = G_Cu_BCC,-9945.1
+# 200.00 K < Temp < 453.60  K -10583.817+217.637482*Temp-38.940488*Temp*log(Temp)+0.035466931*Temp*Temp-1.9869816e-5*Temp*Temp*Temp+159994/Temp
+Define.Var = G_Li_FCC,-8736.1
+# 250.00 K < Temp < 505.08  K -5855.135+65.443315*Temp-15.961*Temp*log(Temp)-0.0188702*Temp*Temp+3.121167e-6*Temp*Temp*Temp-61960/Temp
+Define.Var = G_Sn_BCT,-15354.0
+# ---------------------------------------------------------------------------------------
+# Gibbs energy
+Define.Var = LiSn_Cu_eq,0.0
+Define.Var = LiSn_Li_eq,0.5
+Define.Func = g_LiSn@{[LiSn_Cu_eq*G_Cu_BCC+LiSn_Li_eq*G_Li_FCC+(1.0-LiSn_Cu_eq-LiSn_Li_eq)*G_Sn_BCT-33310.0]}@
+Define.Var = Li7Sn3_Cu_eq,0.0
+Define.Var = Li7Sn3_Li_eq,0.7
+Define.Func = g_Li7Sn3@{[Li7Sn3_Cu_eq*G_Cu_BCC+Li7Sn3_Li_eq*G_Li_FCC+(1.0-Li7Sn3_Cu_eq-Li7Sn3_Li_eq)*G_Sn_BCT-39620.0]}@
+Define.Var = CuLi2Sn2_Cu_eq,0.2
+Define.Var = CuLi2Sn2_Li_eq,0.4
+Define.Func = g_CuLi2Sn2@{[CuLi2Sn2_Cu_eq*G_Cu_BCC+CuLi2Sn2_Li_eq*G_Li_FCC+(1.0-CuLi2Sn2_Cu_eq-CuLi2Sn2_Li_eq)*G_Sn_BCT-32595.0]}@
+Define.Var = Cu2LiSn_Cu_eq,0.5
+Define.Var = Cu2LiSn_Li_eq,0.25
+Define.Func = g_Cu2LiSn@{[Cu2LiSn_Cu_eq*G_Cu_BCC+Cu2LiSn_Li_eq*G_Li_FCC+(1.0-Cu2LiSn_Cu_eq-Cu2LiSn_Li_eq)*G_Sn_BCT-20776.0]}@
+Define.Var = Cu_Cu_eq,1.0
+Define.Var = Cu_Li_eq,0.0
+Define.Func = g_Cu@{[Cu_Cu_eq*G_Cu_BCC+Cu_Li_eq*G_Li_FCC+(1.0-Cu_Cu_eq-Cu_Li_eq)*G_Sn_BCT+G_Cu_BCC]}@
+Define.Var = CuLi2Sn_Cu_eq,0.25
+Define.Var = CuLi2Sn_Li_eq,0.5
+Define.Func = g_CuLi2Sn@{[CuLi2Sn_Cu_eq*G_Cu_BCC+CuLi2Sn_Li_eq*G_Li_FCC+(1.0-CuLi2Sn_Cu_eq-CuLi2Sn_Li_eq)*G_Sn_BCT-33230.0]}@
+# ---------------------------------------------------------------------------------------
+Define.Var = A,500
+Define.Var = Vm,1e-5
+Define.Func = EnergyStandard@{[(Temp*GAS_CONST/Vm)]}@
+Define.Func = f_LiSn@{[(g_LiSn<0>/Vm/EnergyStandard<0>)]}@
+Define.Func = f_Li7Sn3@{[(g_Li7Sn3<0>/Vm/EnergyStandard<0>)]}@
+Define.Func = f_CuLi2Sn2@{[(g_CuLi2Sn2<0>/Vm/EnergyStandard<0>)]}@
+Define.Func = f_Cu2LiSn@{[(g_Cu2LiSn<0>/Vm/EnergyStandard<0>)]}@
+Define.Func = f_Cu@{[(g_Cu<0>/Vm/EnergyStandard<0>)]}@
+Define.Func = f_CuLi2Sn@{[(g_CuLi2Sn<0>/Vm/EnergyStandard<0>)]}@
+# ---------------------------------------------------------------------------------------
+# parameters for High Order Multivariate Linear Equations
+# energy model : f_{elec\_chem}^\alpha=A\sum_{i=1}^{K-1}\left(x_i^\alpha-x_{i,eq}^\alpha\right)^2+\left(V_m\right)^{-1}G_m^\alpha\left(T\right)
+# A00 = A*x_{eq}^2+f/2, A01 = -2A*x_{eq}, A02 = A
+# LiSn phase
+Define.Func = f_LiSn_A00@{[(A*LiSn_Cu_eq*LiSn_Cu_eq+f_LiSn<0>/2.0)]}@
+Define.Func = f_LiSn_A01@{[(-2.0*A*LiSn_Cu_eq)]}@
+Define.Func = f_LiSn_A02@{[(A)]}@
+Define.Func = f_LiSn_A10@{[(A*LiSn_Li_eq*LiSn_Li_eq+f_LiSn<0>/2.0)]}@
+Define.Func = f_LiSn_A11@{[(-2.0*A*LiSn_Li_eq)]}@
+Define.Func = f_LiSn_A12@{[(A)]}@
+Define.Func = PhiCon_LiSn_Cu_A0@{[(-f_LiSn_A01<0>/2.0/f_LiSn_A02<0>)]}@
+Define.Func = PhiCon_LiSn_Cu_A1@{[(1.0/2.0/f_LiSn_A02<0>)]}@
+Define.Func = PhiCon_LiSn_Li_A0@{[(-f_LiSn_A11<0>/2.0/f_LiSn_A12<0>)]}@
+Define.Func = PhiCon_LiSn_Li_A1@{[(1.0/2.0/f_LiSn_A12<0>)]}@
+# Li7Sn3 phase
+Define.Func = f_Li7Sn3_A00@{[(A*Li7Sn3_Cu_eq*Li7Sn3_Cu_eq+f_Li7Sn3<0>/2.0)]}@
+Define.Func = f_Li7Sn3_A01@{[(-2.0*A*Li7Sn3_Cu_eq)]}@
+Define.Func = f_Li7Sn3_A02@{[(A)]}@
+Define.Func = f_Li7Sn3_A10@{[(A*Li7Sn3_Li_eq*Li7Sn3_Li_eq+f_Li7Sn3<0>/2.0)]}@
+Define.Func = f_Li7Sn3_A11@{[(-2.0*A*Li7Sn3_Li_eq)]}@
+Define.Func = f_Li7Sn3_A12@{[(A)]}@
+Define.Func = PhiCon_Li7Sn3_Cu_A0@{[(-f_Li7Sn3_A01<0>/2.0/f_Li7Sn3_A02<0>)]}@
+Define.Func = PhiCon_Li7Sn3_Cu_A1@{[(1.0/2.0/f_Li7Sn3_A02<0>)]}@
+Define.Func = PhiCon_Li7Sn3_Li_A0@{[(-f_Li7Sn3_A11<0>/2.0/f_Li7Sn3_A12<0>)]}@
+Define.Func = PhiCon_Li7Sn3_Li_A1@{[(1.0/2.0/f_Li7Sn3_A12<0>)]}@
+# CuLi2Sn2 phase
+Define.Func = f_CuLi2Sn2_A00@{[(A*CuLi2Sn2_Cu_eq*CuLi2Sn2_Cu_eq+f_CuLi2Sn2<0>/2.0)]}@
+Define.Func = f_CuLi2Sn2_A01@{[(-2.0*A*CuLi2Sn2_Cu_eq)]}@
+Define.Func = f_CuLi2Sn2_A02@{[(A)]}@
+Define.Func = f_CuLi2Sn2_A10@{[(A*CuLi2Sn2_Li_eq*CuLi2Sn2_Li_eq+f_CuLi2Sn2<0>/2.0)]}@
+Define.Func = f_CuLi2Sn2_A11@{[(-2.0*A*CuLi2Sn2_Li_eq)]}@
+Define.Func = f_CuLi2Sn2_A12@{[(A)]}@
+Define.Func = PhiCon_CuLi2Sn2_Cu_A0@{[(-f_CuLi2Sn2_A01<0>/2.0/f_CuLi2Sn2_A02<0>)]}@
+Define.Func = PhiCon_CuLi2Sn2_Cu_A1@{[(1.0/2.0/f_CuLi2Sn2_A02<0>)]}@
+Define.Func = PhiCon_CuLi2Sn2_Li_A0@{[(-f_CuLi2Sn2_A11<0>/2.0/f_CuLi2Sn2_A12<0>)]}@
+Define.Func = PhiCon_CuLi2Sn2_Li_A1@{[(1.0/2.0/f_CuLi2Sn2_A12<0>)]}@
+# Cu2LiSn phase
+Define.Func = f_Cu2LiSn_A00@{[(A*Cu2LiSn_Cu_eq*Cu2LiSn_Cu_eq+f_Cu2LiSn<0>/2.0)]}@
+Define.Func = f_Cu2LiSn_A01@{[(-2.0*A*Cu2LiSn_Cu_eq)]}@
+Define.Func = f_Cu2LiSn_A02@{[(A)]}@
+Define.Func = f_Cu2LiSn_A10@{[(A*Cu2LiSn_Li_eq*Cu2LiSn_Li_eq+f_Cu2LiSn<0>/2.0)]}@
+Define.Func = f_Cu2LiSn_A11@{[(-2.0*A*Cu2LiSn_Li_eq)]}@
+Define.Func = f_Cu2LiSn_A12@{[(A)]}@
+Define.Func = PhiCon_Cu2LiSn_Cu_A0@{[(-f_Cu2LiSn_A01<0>/2.0/f_Cu2LiSn_A02<0>)]}@
+Define.Func = PhiCon_Cu2LiSn_Cu_A1@{[(1.0/2.0/f_Cu2LiSn_A02<0>)]}@
+Define.Func = PhiCon_Cu2LiSn_Li_A0@{[(-f_Cu2LiSn_A11<0>/2.0/f_Cu2LiSn_A12<0>)]}@
+Define.Func = PhiCon_Cu2LiSn_Li_A1@{[(1.0/2.0/f_Cu2LiSn_A12<0>)]}@
+# Cu phase
+Define.Func = f_Cu_A00@{[(A*Cu_Cu_eq*Cu_Cu_eq+f_Cu<0>/2.0)]}@
+Define.Func = f_Cu_A01@{[(-2.0*A*Cu_Cu_eq)]}@
+Define.Func = f_Cu_A02@{[(A)]}@
+Define.Func = f_Cu_A10@{[(A*Cu_Li_eq*Cu_Li_eq+f_Cu<0>/2.0)]}@
+Define.Func = f_Cu_A11@{[(-2.0*A*Cu_Li_eq)]}@
+Define.Func = f_Cu_A12@{[(A)]}@
+Define.Func = PhiCon_Cu_Cu_A0@{[(-f_Cu_A01<0>/2.0/f_Cu_A02<0>)]}@
+Define.Func = PhiCon_Cu_Cu_A1@{[(1.0/2.0/f_Cu_A02<0>)]}@
+Define.Func = PhiCon_Cu_Li_A0@{[(-f_Cu_A11<0>/2.0/f_Cu_A12<0>)]}@
+Define.Func = PhiCon_Cu_Li_A1@{[(1.0/2.0/f_Cu_A12<0>)]}@
+# CuLi2Sn phase
+Define.Func = f_CuLi2Sn_A00@{[(A*CuLi2Sn_Cu_eq*CuLi2Sn_Cu_eq+f_CuLi2Sn<0>/2.0)]}@
+Define.Func = f_CuLi2Sn_A01@{[(-2.0*A*CuLi2Sn_Cu_eq)]}@
+Define.Func = f_CuLi2Sn_A02@{[(A)]}@
+Define.Func = f_CuLi2Sn_A10@{[(A*CuLi2Sn_Li_eq*CuLi2Sn_Li_eq+f_CuLi2Sn<0>/2.0)]}@
+Define.Func = f_CuLi2Sn_A11@{[(-2.0*A*CuLi2Sn_Li_eq)]}@
+Define.Func = f_CuLi2Sn_A12@{[(A)]}@
+Define.Func = PhiCon_CuLi2Sn_Cu_A0@{[(-f_CuLi2Sn_A01<0>/2.0/f_CuLi2Sn_A02<0>)]}@
+Define.Func = PhiCon_CuLi2Sn_Cu_A1@{[(1.0/2.0/f_CuLi2Sn_A02<0>)]}@
+Define.Func = PhiCon_CuLi2Sn_Li_A0@{[(-f_CuLi2Sn_A11<0>/2.0/f_CuLi2Sn_A12<0>)]}@
+Define.Func = PhiCon_CuLi2Sn_Li_A1@{[(1.0/2.0/f_CuLi2Sn_A12<0>)]}@
+# ---------------------------------------------------------------------------------------
+# - interface energy
+Define.Var = dr_standard,5e-8
+Define.Func = int_EnergyStandard@{[(EnergyStandard<0>*dr_standard)]}@
+Define.Var = int_energy_density,0.1
+Define.Var = int_external_energy_density,10.0
+Define.Func = interface_energy_ab@{[(int_energy_density+int_external_energy_density)/int_EnergyStandard<0>]}@
+Define.Func = interface_energy_abc@{[(0.1*interface_energy_ab<0>)]}@
+# ---------------------------------------------------------------------------------------
+# - mobility
+Define.Var = Mob_solid,0.001
+# ---------------------------------------------------------------------------------------
+# - diffusivity
+Define.Var = dt_standard,0.1
+Define.Func = D_standard@{[(dr_standard*dr_standard/dt_standard)]}@
+# - 
+Define.Var = D_Cu,1e-14
+Define.Var = D_Li,1e-14
+Define.Func = M_LiSn_Cu@{[(D_Cu/D_standard<0>*PhiCon_LiSn_Cu_A1<0>)]}@
+Define.Func = M_LiSn_Li@{[(D_Li/D_standard<0>*PhiCon_LiSn_Li_A1<0>)]}@
+Define.Func = M_Li7Sn3_Cu@{[(D_Cu/D_standard<0>*PhiCon_Li7Sn3_Cu_A1<0>)]}@
+Define.Func = M_Li7Sn3_Li@{[(D_Li/D_standard<0>*PhiCon_Li7Sn3_Li_A1<0>)]}@
+Define.Func = M_CuLi2Sn2_Cu@{[(D_Cu/D_standard<0>*PhiCon_CuLi2Sn2_Cu_A1<0>)]}@
+Define.Func = M_CuLi2Sn2_Li@{[(D_Li/D_standard<0>*PhiCon_CuLi2Sn2_Li_A1<0>)]}@
+Define.Func = M_Cu2LiSn_Cu@{[(D_Cu/D_standard<0>*PhiCon_LiSn_Cu_A1<0>)]}@
+Define.Func = M_Cu2LiSn_Li@{[(D_Li/D_standard<0>*PhiCon_LiSn_Li_A1<0>)]}@
+Define.Func = M_Cu_Cu@{[(D_Cu/D_standard<0>*PhiCon_LiSn_Cu_A1<0>)]}@
+Define.Func = M_Cu_Li@{[(D_Li/D_standard<0>*PhiCon_LiSn_Li_A1<0>)]}@
+Define.Func = M_CuLi2Sn_Cu@{[(D_Cu/D_standard<0>*PhiCon_LiSn_Cu_A1<0>)]}@
+Define.Func = M_CuLi2Sn_Li@{[(D_Li/D_standard<0>*PhiCon_LiSn_Li_A1<0>)]}@
+# chemical Electrode Reaction  Li22Sn5    crate = 1.0 / 15.0
+Define.Var = full_charge_Li,0.814815
+Define.Var = C_rate_exp,0.066666667
+Define.Func = Crate@{[(C_rate_exp*dt_standard)]}@

@@ -1,0 +1,37 @@
+###### whether to test this input file
+InputFile.debug = true
+
+###### Init Solver
+Solver.Mesh.Nx = 100
+Solver.Mesh.Ny = 100
+Solver.Mesh.Nz = 1
+Postprocess.PCT.VTS.phi_index = true
+
+Solver.Phases = {[(liquid),()],[(solid),()]} 
+
+
+################################# first step
+###### Microstructure
+# .property = (phi_index, phi_name, geometry_type, rotation_gauge, reverse_region) 
+#              geometry_type  : 0 - None, 1 - Ellipsoid, 2 - Polyhedron 
+#              rotation_gauge : 0 - XYX, 1 - XZX, 2 - YXY, 3 - YZY, 4  - ZXZ, 5  - ZYZ 
+#                               6 - XYZ, 7 - XZY, 8 - YXZ, 9 - YZX, 10 - ZXY, 11 - ZYX 
+Preprocess.Microstructure.matrix = {[(0),(liquid),()],[()],[(0.0)]}
+Preprocess.Microstructure.Matrix.phi = 1.000000
+Preprocess.Microstructure.geometry_layer_number = 4
+Preprocess.Microstructure.geometry_layer_0.property = (1,solid,1,1,false)
+Preprocess.Microstructure.geometry_layer_0.ellipsoid = [(50.0,50.0,0.0),(40.0,23.0,0.0),(0.0,0.0,0.0)]
+Preprocess.Microstructure.geometry_layer_0.phi = 1.000000
+Preprocess.Microstructure.geometry_layer_0.is_normalized = true
+Preprocess.Microstructure.geometry_layer_1.property = (1,solid,1,1,false)
+Preprocess.Microstructure.geometry_layer_1.ellipsoid = [(50.0,50.0,0.0),(23.0,40.0,0.0),(0.0,0.0,0.0)]
+Preprocess.Microstructure.geometry_layer_1.phi = 1.000000
+Preprocess.Microstructure.geometry_layer_1.is_normalized = true
+Preprocess.Microstructure.geometry_layer_2.property = (1,solid,1,1,false)
+Preprocess.Microstructure.geometry_layer_2.ellipsoid = [(50.0,50.0,0.0),(23.0,40.0,0.0),(0.0,-45.0,0.0)]
+Preprocess.Microstructure.geometry_layer_2.phi = 1.000000
+Preprocess.Microstructure.geometry_layer_2.is_normalized = true
+Preprocess.Microstructure.geometry_layer_3.property = (1,solid,1,1,false)
+Preprocess.Microstructure.geometry_layer_3.ellipsoid = [(50.0,50.0,0.0),(23.0,40.0,0.0),(0.0,45.0,0.0)]
+Preprocess.Microstructure.geometry_layer_3.phi = 1.000000
+Preprocess.Microstructure.geometry_layer_3.is_normalized = true
