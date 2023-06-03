@@ -1,0 +1,57 @@
+###### whether to test this input file
+InputFile.debug = true
+
+###### Init Solver
+Solver.Mesh.Nx = 100
+Solver.Mesh.Ny = 100
+Solver.Mesh.Nz = 1
+
+Postprocess.PCT.VTS.phi_index = true
+Postprocess.PCT.VTS.phi = true
+Solver.PCT.TimeInterval.dt = 1.000000
+Solver.Phi.is_normalize = true
+Solver.Parallel.openmp_thread_counts = 5
+
+Solver.Phases = {[(liquid),()],[(solid),()]} 
+
+################################# first step
+###### Microstructure
+# .property = (phi_index, phi_name, geometry_type, rotation_gauge, reverse_region) 
+#              geometry_type  : 0 - None, 1 - Ellipsoid, 2 - Polyhedron 
+#              rotation_gauge : 0 - XYX, 1 - XZX, 2 - YXY, 3 - YZY, 4  - ZXZ, 5  - ZYZ 
+#                               6 - XYZ, 7 - XZY, 8 - YXZ, 9 - YZX, 10 - ZXY, 11 - ZYX 
+Preprocess.Microstructure.matrix = {[(0),(liquid),()],[()],[(0.0)]}
+
+# ModelsManager.Phi.equation : 0 - Const, 1 - AllenCahn Standard, 2 - AllenCahn Pairwise, 3 - CahnHilliard Standard
+ModelsManager.Phi.equation = 2
+# ModelsManager.Phi.Lij.const  = Lij_value 
+#                      .matrix = [(phi_i, phi_j, Lij_value), ... ] 
+ModelsManager.Phi.Lij.const = 0.010000
+#ModelsManager.Phi.Lij.matrix = [()]
+# ModelsManager.Phi.InterfaceEnergy.int_gradient : 0 - Steinbach_1996 , 1 - Steinbach_1999 , 2 - Steinbach_G2009
+ModelsManager.Phi.InterfaceEnergy.int_gradient = 2
+# ModelsManager.Phi.InterfaceEnergy.int_potential : 0 - Nestler_Well , 1 - Nestler_Obstacle , 2 - Steinbach_P2009
+ModelsManager.Phi.InterfaceEnergy.int_potential = 2
+ModelsManager.Phi.InterfaceEnergy.int_width = 6.000000
+# ModelsManager.Phi.xi_ab.const  = xi_ab 
+#                        .matrix = [(phi_a, phi_b, xi_ab_value), ...] 
+ModelsManager.Phi.xi_ab.const = 1.000000
+ModelsManager.Phi.xi_ab.matrix = [()]
+# ModelsManager.Phi.xi_abc.const  = xi_ab 
+#                         .matrix = [(phi_a, phi_b, phi_c, xi_abc_value), ...] 
+ModelsManager.Phi.xi_abc.const = 0.000000
+
+################################# second step
+Preprocess.Microstructure.is_datafile_init = true
+Preprocess.Microstructure.datafile_path = 1_basic_particle_2D/data_end.dat
+# .property = [(phi_index_begin, phi_index_end), (phi_name, ... ),(phi_weight, ...),(in phi_a, in phi_b, in phi_c)] 
+Preprocess.Microstructure.voronoi_inPhis.property = [(0,30),(solid),(1.0),(1)]
+# .box = [(box_origin_point),(box_end_point)] 
+Preprocess.Microstructure.voronoi_inPhis.box = [(0,0,0),(100,100,0)]
+Preprocess.Microstructure.voronoi_inPhis.rand_seed = 0
+
+
+Preprocess.remove_inexistent_phis = true
+Preprocess.re_ordering_phis_indexs_from = 0
+# Preprocess.relax_interface = (relax_steps, output_steps, fix_phi_after_relax) 
+Preprocess.relax_interface = (2000,100,false)

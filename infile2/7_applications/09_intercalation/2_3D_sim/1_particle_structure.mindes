@@ -1,0 +1,93 @@
+###### custom functions
+# Define.Var = A,0.1
+# Define.Func = ABC@{[(A*PHI<1>)]}@
+# default field variable: "PHI", "dPHI_dt", "lap_PHI", "PHI_X", "dPHI_X_dt", "X", "dX_dt", "T", "dT_dt", "lap_T", "P", "dP_dt", "lap_P", "PHI_P", "dPHI_P_dt", "lap_PHI_P"
+# default functions		: "pow", "sqrt", "abs", "exp", "ln", "log", "sin", "cos", "tan", "asin", "acos", "atan"
+
+InputFile.debug = true
+
+###### Init Solver
+Solver.Mesh.Nx = 192
+Solver.Mesh.Ny = 192
+Solver.Mesh.Nz = 192
+Solver.Loop.begin_step = 0
+Solver.Loop.end_step = 500
+
+Solver.Loop.screen_output_step = 50
+Solver.Loop.vts_output_step = 10000
+Solver.Loop.data_output_step = 10000
+Postprocess.PCT.VTS.phi_index = true
+Solver.Phi.is_normalize = true
+Solver.Parallel.openmp_thread_counts = 56
+
+Solver.PCT.TimeInterval.dt = 1.000000
+# Solver.PCT.TimeInterval.auto_adjust = (delt_step,max_scale,is_reduce_output)
+Solver.PCT.TimeInterval.auto_adjust = (50,1e3,true)
+Solver.PCT.phi_increment_limit = 0.010000
+Solver.PCT.con_increment_limit = 1.0
+
+<AUTO> Solver.Loop.stop = false
+
+Solver.Phases = {[(liquid),()],[(particle),()]}
+
+# .matrix = {[(phi_index),(phi_name),(phi_comp_0_value, phi_comp_1_value, ... )],[(total_comp_0_value, total_comp_1_value, ... )],[(temp_value)]} 
+Preprocess.Microstructure.matrix = {[(0),(liquid),()],[()],[(0.0)]}
+
+Preprocess.Microstructure.geometry_layer_number = 3
+Preprocess.Microstructure.geometry_layer_0.property = (1,particle,1,1,false)
+Preprocess.Microstructure.geometry_layer_0.ellipsoid = [(108.0,111.0,111.0),(66.0,66.0,66.0),(0.0,0.0,0.0)]
+Preprocess.Microstructure.geometry_layer_0.phi = 1.000000
+Preprocess.Microstructure.geometry_layer_0.is_normalized = true
+Preprocess.Microstructure.geometry_layer_1.property = (1,particle,1,1,false)
+Preprocess.Microstructure.geometry_layer_1.ellipsoid = [(108.0,81.0,81.0),(66.0,66.0,66.0),(0.0,0.0,0.0)]
+Preprocess.Microstructure.geometry_layer_1.phi = 1.000000
+Preprocess.Microstructure.geometry_layer_1.is_normalized = true
+Preprocess.Microstructure.geometry_layer_2.property = (1,particle,1,1,false)
+Preprocess.Microstructure.geometry_layer_2.ellipsoid = [(57.0,128.0,128.0),(45.0,45.0,45.0),(0.0,0.0,0.0)]
+Preprocess.Microstructure.geometry_layer_2.phi = 1.000000
+Preprocess.Microstructure.geometry_layer_2.is_normalized = true
+
+# ModelsManager.Phi.equation : 0 - Const, 1 - AllenCahn Standard, 2 - AllenCahn Pairwise, 3 - CahnHilliard Standard
+ModelsManager.Phi.equation = 2
+# ModelsManager.Phi.Lij.const  = Lij_value 
+#                      .matrix = [(phi_i, phi_j, Lij_value), ... ] 
+ModelsManager.Phi.Lij.const = Mob_solid
+# ModelsManager.Phi.InterfaceEnergy.int_gradient : 0 - Steinbach_1996 , 1 - Steinbach_1999 , 2 - Steinbach_G2009
+ModelsManager.Phi.InterfaceEnergy.int_gradient = 2
+# ModelsManager.Phi.InterfaceEnergy.int_potential : 0 - Nestler_Well , 1 - Nestler_Obstacle , 2 - Steinbach_P2009
+ModelsManager.Phi.InterfaceEnergy.int_potential = 2
+ModelsManager.Phi.InterfaceEnergy.int_width = 6.000000
+# ModelsManager.Phi.xi_ab.const  = xi_ab 
+#                        .matrix = [(phi_a, phi_b, xi_ab_value), ...] 
+ModelsManager.Phi.xi_ab.const = interface_energy_ab
+# ModelsManager.Phi.xi_abc.const  = xi_ab 
+#                         .matrix = [(phi_a, phi_b, phi_c, xi_abc_value), ...] 
+ModelsManager.Phi.xi_abc.const = interface_energy_abc
+
+# Preprocess.relax_interface = (relax_steps, output_steps, fix_phi_after_relax) 
+Preprocess.relax_interface = (500,50,false)
+
+
+######################### define custom variables and functions #########################
+# Define.Var = A,0.1
+# Define.Func = ABC@{[(A*PHI<1>)]}@
+# default field variables: "PHI", "dPHI_dt", "lap_PHI", "PHI_X", "dPHI_X_dt", "X", "dX_dt"
+#                          "T", "dT_dt", "lap_T", "P", "dP_dt", "lap_P", "PHI_P", "dPHI_P_dt", "lap_PHI_P"
+# default functions      : "pow", "sqrt", "abs", "exp", "ln", "log", "sin", "cos", "tan", "asin", "acos", "atan"
+#########################################################################################
+# ref state
+Define.Var = Temp,300.0
+Define.Var = GAS_CONST,8.31441
+Define.Var = Vm,1e-5
+Define.Func = EnergyStandard@{[(Temp*GAS_CONST/Vm)]}@
+# ---------------------------------------------------------------------------------------
+# - interface energy
+Define.Var = dr_standard,5e-8
+Define.Func = int_EnergyStandard@{[(EnergyStandard<0>*dr_standard)]}@
+Define.Var = int_energy_density,0.1
+Define.Var = int_external_energy_density,10.0
+Define.Func = interface_energy_ab@{[(int_energy_density+int_external_energy_density)/int_EnergyStandard<0>]}@
+Define.Func = interface_energy_abc@{[(0.1*interface_energy_ab<0>)]}@
+# ---------------------------------------------------------------------------------------
+# - mobility
+Define.Var = Mob_solid,0.001

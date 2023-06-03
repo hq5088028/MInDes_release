@@ -1,0 +1,46 @@
+###### whether to test this input file
+InputFile.debug = true
+
+###### Init Solver
+Solver.Mesh.Nx = 100
+Solver.Mesh.Ny = 100
+Solver.Mesh.Nz = 1
+Solver.Loop.begin_step = 0
+Solver.Loop.end_step = 10000
+Solver.Loop.screen_output_step = 100
+Solver.Loop.vts_output_step = 100
+Solver.Loop.data_output_step = 100000
+Postprocess.PCT.VTS.phi_index = true
+Postprocess.PCT.VTS.con = true
+Postprocess.PCT.VTS.potential = true
+Solver.PCT.TimeInterval.dt = 0.10000
+Solver.Parallel.openmp_thread_counts = 5
+
+Solver.Phases = {[(liquid),(c0)],[(solid),(c0)]} 
+Solver.Comps = (c0)
+
+Preprocess.Microstructure.is_datafile_init = true
+Preprocess.Microstructure.datafile_path = ../1_structure/4_final/data_end.dat
+Preprocess.fill_phis = {[(1),(0.001),(0.001),(0.0)],[(2),(0.001),(0.001),(0.0)],[(3),(0.001),(0.001),(0.0)],[(4),(0.001),(0.001),(0.0)]}
+
+ModelsManager.Con.equation = 3
+# ModelsManager.Con.valid_domain : 0 - Standard, 1 - Reverse
+ModelsManager.Con.valid_domain = 1
+ModelsManager.Con.ValidDomain.phase_indexes = (0)
+ModelsManager.Con.ValidDomain.threshold = 0.900000
+# ModelsManager.Con.Dij.const = Dii 
+#                      .matrix = [(D_00, D_01, ...), (D_10, D_11, ...), ... ]
+ModelsManager.Con.Dij.const = 0.10000
+#ModelsManager.Con.Dij.matrix = {[()]}
+ModelsManager.Con.ElectrodeReaction.electrolyte_index = 0
+ModelsManager.Con.ElectrodeReaction.active_con = c0
+ModelsManager.Con.ElectrodeReaction.k_BV = 0.00100
+ModelsManager.Con.ElectrodeReaction.reference_voltage = 2.000000
+ModelsManager.Con.ElectrodeReaction.temperature = 300.000000
+#ModelsManager.Con.ElectrodeReaction.applied_voltage = 0.000000
+ModelsManager.Con.ElectrodeReaction.AppliedVoltage.cut_off_low = 0.000000
+ModelsManager.Con.ElectrodeReaction.AppliedVoltage.cut_off_high = 2.000000
+ModelsManager.Con.ElectrodeReaction.Crate = 1.000000
+ModelsManager.Con.ElectrodeReaction.X_full = 1.000000
+
+Postprocess.Statistics.is_phi_c_t = true

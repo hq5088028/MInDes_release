@@ -1,0 +1,114 @@
+###### whether to test this input file
+InputFile.debug = true
+
+###### Init Solver
+Solver.Mesh.Nx = 100
+Solver.Mesh.Ny = 100
+Solver.Mesh.Nz = 1
+Solver.Loop.begin_step = 0
+Solver.Loop.end_step = 0
+
+Solver.Loop.screen_output_step = 100
+Solver.Loop.vts_output_step = 100
+Solver.Loop.data_output_step = 200
+Postprocess.PCT.VTS.phi = true
+Postprocess.PCT.VTS.phi_index = true
+Postprocess.PCT.VTS.con = true
+Postprocess.PCT.VTS.potential = true
+Postprocess.PCT.VTS.phi_name = true
+Solver.PCT.TimeInterval.dt = 0.10000
+Solver.Phi.is_normalize = true
+Solver.Parallel.openmp_thread_counts = 5
+
+<AUTO> Solver.Loop.stop = false
+
+Solver.Phases = {[(liquid),(Cu,Li)],[(LiSn),(Cu,Li)],[(Li7Sn3),(Cu,Li)],[(CuLi2Sn2),(Cu,Li)],[(Cu2LiSn),(Cu,Li)],[(Cu),(Cu,Li)],[(CuLi2Sn),(Cu,Li)]}
+Solver.Comps = (Cu,Li)
+
+Preprocess.Microstructure.is_datafile_init = true
+Preprocess.Microstructure.datafile_path = ..\4_small_scale_elastoplasticity\1_generate_structure\data_end.dat
+
+Preprocess.Microstructure.geometry_layer_number = 1
+# .property = (phi_index, phi_name, geometry_type, rotation_gauge, reverse_region) 
+#              geometry_type  : 0 - None, 1 - Ellipsoid, 2 - Polyhedron 
+#              rotation_gauge : 0 - XYX, 1 - XZX, 2 - YXY, 3 - YZY, 4  - ZXZ, 5  - ZYZ 
+#                               6 - XYZ, 7 - XZY, 8 - YXZ, 9 - YZX, 10 - ZXY, 11 - ZYX 
+Preprocess.Microstructure.geometry_layer_0.property = (0,liquid,1,1,false)
+# .ellipsoid = [(core_x,core_y,core_z),(radius_x,radius_y,radius_z),(rotation_radian_1,rotation_radian_2,rotation_radian_3)] 
+Preprocess.Microstructure.geometry_layer_0.ellipsoid = [(50,81,0),(2,3,0),(0,0,0)]
+Preprocess.Microstructure.geometry_layer_0.phi = 0.000000
+Preprocess.Microstructure.geometry_layer_0.is_normalized = false
+# .x = [(comp_0_name,comp_0_value),(comp_1_name,comp_1_value), ...] 
+Preprocess.Microstructure.geometry_layer_0.x = [(Cu,0.0),(Li,0.7)]
+# .custom_int = [(custom_0_index, custom_0_value),(custom_1_index, custom_1_value), ...] 
+Preprocess.Microstructure.geometry_layer_0.custom_int = [(0,1.0)]
+
+# Postprocess.physical_fields = (mechanic, fluid dynamic, electric) 
+Postprocess.physical_fields = (true,false,false)
+# Postprocess.SolidMechanics.momentum_balance = 0 - None , 1 - Explicit , 2 - Implicit 
+Postprocess.SolidMechanics.momentum_balance = 2
+Postprocess.SolidMechanics.write_displacement_field = FALSE
+Postprocess.SolidMechanics.max_iteration_steps = 200
+Postprocess.SolidMechanics.debug = true
+Postprocess.SolidMechanics.strain_accuracy = 0.0001
+Postprocess.SolidMechanics.solid_phases = (LiSn,Li7Sn3,CuLi2Sn2,Cu2LiSn,CuLi2Sn,Cu)
+Postprocess.SolidMechanics.Stiffness.LiSn = [(C11,C12,C12,0,0,0),(C12,C11,C12,0,0,0),(C12,C12,C11,0,0,0),(0,0,0,Gm,0,0),(0,0,0,0,Gm,0),(0,0,0,0,0,Gm)]
+Postprocess.SolidMechanics.EigenStrain.LiSn = (0,0,0,0,0,0)
+Postprocess.SolidMechanics.Stiffness.Li7Sn3 = [(C11,C12,C12,0,0,0),(C12,C11,C12,0,0,0),(C12,C12,C11,0,0,0),(0,0,0,Gm,0,0),(0,0,0,0,Gm,0),(0,0,0,0,0,Gm)]
+Postprocess.SolidMechanics.EigenStrain.Li7Sn3 = (0.01,0.01,0.01,0,0,0)
+Postprocess.SolidMechanics.Stiffness.CuLi2Sn2 = [(C11,C12,C12,0,0,0),(C12,C11,C12,0,0,0),(C12,C12,C11,0,0,0),(0,0,0,Gm,0,0),(0,0,0,0,Gm,0),(0,0,0,0,0,Gm)]
+Postprocess.SolidMechanics.EigenStrain.CuLi2Sn2 = (0,0,0,0,0,0)
+Postprocess.SolidMechanics.Stiffness.Cu2LiSn = [(C11,C12,C12,0,0,0),(C12,C11,C12,0,0,0),(C12,C12,C11,0,0,0),(0,0,0,Gm,0,0),(0,0,0,0,Gm,0),(0,0,0,0,0,Gm)]
+Postprocess.SolidMechanics.EigenStrain.Cu2LiSn = (0.0,0.0,0.0,0,0,0)
+Postprocess.SolidMechanics.Stiffness.CuLi2Sn = [(C11,C12,C12,0,0,0),(C12,C11,C12,0,0,0),(C12,C12,C11,0,0,0),(0,0,0,Gm,0,0),(0,0,0,0,Gm,0),(0,0,0,0,0,Gm)]
+Postprocess.SolidMechanics.EigenStrain.CuLi2Sn = (0.0,0.0,0.0,0,0,0)
+Postprocess.SolidMechanics.Stiffness.Cu = [(C11,C12,C12,0,0,0),(C12,C11,C12,0,0,0),(C12,C12,C11,0,0,0),(0,0,0,Gm,0,0),(0,0,0,0,Gm,0),(0,0,0,0,0,Gm)]
+Postprocess.SolidMechanics.EigenStrain.Cu = (0,0,0,0,0,0)
+Postprocess.SolidMechanics.plasticity = false
+Postprocess.SolidMechanics.Elastoplasticity.mapping_steps = 50
+Postprocess.SolidMechanics.Plasticity.max_iteration_steps = 1
+# -
+Postprocess.SolidMechanics.Plasticity.yield_stress = (yeild_stress,yeild_stress,small_yeild_stress,yeild_stress,yeild_stress,yeild_stress,yeild_stress)
+Postprocess.SolidMechanics.Plasticity.hardening_modulus = (0.0,0.0,0.0,0.0,0.0,0.0,0.0)
+Postprocess.SolidMechanics.Plasticity.shear_modulus = (mG,mG,mG,mG,mG,iG,mG)
+
+# Postprocess.Crack.model = 1 - Single 
+Postprocess.Crack.model = 1
+Postprocess.Crack.index = 0
+Postprocess.Crack.Solver.frequency = 1
+Postprocess.Crack.Solver.max_iterate_steps = 40
+Postprocess.Crack.Solver.damage_threshold = 0.900000
+Postprocess.Crack.Solver.crack_epsilon = 0.001000
+Postprocess.Crack.Solver.dt = 0.1
+Postprocess.Crack.Solver.int_width = 3.000000
+# Postprocess.Crack.model = 1 - Single 
+Postprocess.Crack.resistance = (0.0,resistance,resistance,resistance,resistance,resistance,resistance)
+# Postprocess.Crack.noise = 0 - uniform, 1 - interface 
+Postprocess.Crack.noise = 1
+Postprocess.Crack.Noise.frequency = 10000
+Postprocess.Crack.Noise.amplitude = 0.0
+Postprocess.Crack.Noise.is_start = false
+Postprocess.Crack.Noise.on_crack = TRUE
+Postprocess.Crack.Noise.random = (0.0,1.0)
+
+######################### define custom variables and functions #########################
+# Define.Var = A,0.1
+# Define.Func = ABC@{[(A*PHI<1>)]}@
+# default field variables: "PHI", "dPHI_dt", "lap_PHI", "PHI_X", "dPHI_X_dt", "X", "dX_dt"
+#                          "T", "dT_dt", "lap_T", "P", "dP_dt", "lap_P", "PHI_P", "dPHI_P_dt", "lap_PHI_P"
+# default functions      : "pow", "sqrt", "abs", "exp", "ln", "log", "sin", "cos", "tan", "asin", "acos", "atan"
+#########################################################################################
+#- mechanics
+Define.Var = Gm,100
+Define.Var = v,0.3
+Define.Var = Az,3.0
+Define.Func = C12@{[v*Gm/(1-2*v)]}@
+Define.Func = C11@{[(2*Gm/Az+C12<0>)]}@
+
+Define.Var = mG,100.0
+Define.Var = small_yeild_stress,0.7
+
+Define.Var = iG,100.0
+Define.Var = yeild_stress,0.7
+
+Define.Var = resistance,0.1
