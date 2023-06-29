@@ -1,2 +1,4 @@
 # MInDes_release
-Application version of MInDes in specific systems. Development packages can be found at https://github.com/hq5088028/MInDes.
+A repository for some ongoing or completed work based on the MInDes code package (https://github.com/hq5088028/MInDes).
+
+Please see the corresponding work for more information.
