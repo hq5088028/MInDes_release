@@ -5,10 +5,4 @@ Each version contains the executable file for linux systems (**MInDes**) and the
 
 **Note: The simulation consumes memory and occupies the processor, please pay attention to the consumption of computing resources in real time to avoid potential problems !!!**
 
-**List of memory consumption:**
-1. 1_ver_2023_June
-   - 0_2D_test : 
-   - 1_2D_sim  :
-   - 2_3D_sim  :
-
 Have fun !
