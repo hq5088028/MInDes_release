@@ -1,0 +1,28 @@
+###### whether to test this input file
+InputFile.debug = true
+
+###### Init Solver
+Solver.Mesh.Nx = 100
+Solver.Mesh.Ny = 100
+Solver.Mesh.Nz = 1
+Postprocess.PCT.VTS.phi_index = true
+Postprocess.PCT.VTS.con = true
+Postprocess.PCT.VTS.phi_name = true
+Solver.Phi.is_normalize = true
+
+Solver.Phases = {[(liquid),(Cu,Li)],[(LiSn),(Cu,Li)],[(Li7Sn3),(Cu,Li)],[(CuLi2Sn2),(Cu,Li)],[(Cu2LiSn),(Cu,Li)],[(Cu),(Cu,Li)],[(CuLi2Sn),(Cu,Li)]} 
+Solver.Comps = (Cu,Li)
+
+Preprocess.Microstructure.is_datafile_init = true
+Preprocess.Microstructure.datafile_path = 3_generate_structure_1\data_end.dat
+
+# .property = [(phi_index_begin, phi_index_end), (phi_name, ... ),(phi_weight, ...),(in phi_index, ... )] 
+Preprocess.Microstructure.voronoi_inPhis.property = [(3,80),(Li7Sn3,Cu),(0.8,0.2),(1)]
+# .box = [(box_origin_point),(box_end_point)] 
+Preprocess.Microstructure.voronoi_inPhis.box = [(0,0,0),(100,100,0)]
+# .x = [(comp_0_name,comp_0_value), (comp_1_name,comp_1_value), ...] 
+Preprocess.Microstructure.voronoi_inPhis.x = [(Cu,0.0),(Li,0.0)]
+Preprocess.Microstructure.voronoi_inPhis.rand_seed = 0
+
+Preprocess.remove_inexistent_phis = true
+Preprocess.re_ordering_phis_indexs_from = 0
